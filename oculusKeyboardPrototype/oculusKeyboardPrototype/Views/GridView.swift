@@ -77,7 +77,7 @@ struct BackgroundView: View {
     let tiles = (0..<height).map { row in
             (0..<width).map { col in
                 value += 1
-                return Tile(value: 98, position: Position(row: row, col: col))
+                return Tile(value: value, position: Position(row: row, col: col))
             }
         }
     
