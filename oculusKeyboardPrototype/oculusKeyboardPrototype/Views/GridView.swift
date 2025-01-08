@@ -23,7 +23,7 @@ struct GridView: View {
             // Background grid
             BackgroundView(tileSize: tileSize, padding: padding)
             // Foreground non-zero tiles
-            ForEach(tiles.flatMap { $0 }) { tile in
+            ForEach(tiles.flatMap { $0 }.filter { $0.value != 0 }) { tile in
                 TileView(tile: tile, tileSize: tileSize, padding: padding,onTap: {
                     if (isSelectTile(tile.position)) {
                         let myCHar = String(Character(UnicodeScalar(tile.value > 0 ? tile.value : 100)!))
@@ -61,7 +61,7 @@ struct BackgroundView: View {
                     ForEach(0..<width) { col in
                         RoundedRectangle(cornerRadius:padding)
                             .fill(Color.colorEmpty)
-                            .frame(width: tileSize, height: tileSize)
+                            .frame(width: tileSize*1.1, height: tileSize)
                     }
                 }
             }
@@ -77,7 +77,7 @@ struct BackgroundView: View {
     let tiles = (0..<height).map { row in
             (0..<width).map { col in
                 value += 1
-                return Tile(value: value, position: Position(row: row, col: col))
+                return Tile(value: 98, position: Position(row: row, col: col))
             }
         }
     

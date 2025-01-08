@@ -16,12 +16,12 @@ struct TileView: View {
     var body: some View {
         let tilePosition = getTilePosition()
         
-        let myCHar = String(Character(UnicodeScalar(tile.value > 0 ? tile.value : 100)!))
+        let myCHar = String(Character(UnicodeScalar(tile.value > 0 ? tile.value : 0)!))
 
         
         RoundedRectangle(cornerRadius:padding)
                 .fill(colorForTile(tile.position))
-                .frame(width: tileSize*1, height: tileSize)
+                .frame(width: tileSize*1.1, height: tileSize)
                     .overlay(
                         Text(myCHar)
                             .font(Font.system(size: 40))
@@ -40,7 +40,7 @@ struct TileView: View {
     }
     
     private func getTilePosition() -> CGPoint {
-            let x = CGFloat(tile.position.col) * (tileSize + padding) + tileSize / 2
+        let x = CGFloat(tile.position.col) * (tileSize*1.1 + padding) + tileSize / 1.8
             let y = CGFloat(tile.position.row) * (tileSize + padding) + tileSize / 2
 
             return CGPoint(x: x, y: y)
